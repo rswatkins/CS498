@@ -1,13 +1,12 @@
 package com.example.accessingdatamysql;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class DataController {
     @Autowired
     private FbmwOrderRepository fbmwOrderRepository;
@@ -15,7 +14,7 @@ public class DataController {
     private FbmwOrderItemRepository fbmwOrderItemRepository;
 
     @PostMapping(path="/fbmw-order/add")
-    public @ResponseBody String addNewOrder(@RequestParam String date,
+    public String addNewOrder(@RequestParam String date,
                                             @RequestParam String operator,
                                             @RequestParam int salesOrder,
                                             @RequestParam String customer,
@@ -32,7 +31,7 @@ public class DataController {
     }
 
     @PostMapping(path="/fbmw-order-item/add")
-    public @ResponseBody String addNewItem(@RequestParam String serialNumber,
+    public String addNewItem(@RequestParam String serialNumber,
                                            @RequestParam float radial,
                                            @RequestParam float axial,
                                            @RequestParam float tangential,
@@ -48,12 +47,12 @@ public class DataController {
     }
 
     @GetMapping(path="/fbmw-order/all")
-    public @ResponseBody Iterable<FbmwOrder> getAllFbmwOrders() {
+    public Iterable<FbmwOrder> getAllFbmwOrders() {
         return fbmwOrderRepository.findAll();
     }
 
     @GetMapping(path="/fbmw-order-item/all")
-    public @ResponseBody Iterable<FbmwOrderItem> getAllFbmwOrderItems() {
+    public Iterable<FbmwOrderItem> getAllFbmwOrderItems() {
         return fbmwOrderItemRepository.findAll();
     }
 
