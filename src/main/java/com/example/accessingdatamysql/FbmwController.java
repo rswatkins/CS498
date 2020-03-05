@@ -33,12 +33,12 @@ public class FbmwController {
 
     @GetMapping(path = "/fbmw-order/all")
     public Iterable<FbmwOrder> getAllFbmwOrders() {
-        return FbmwService.getAllFbmwOrders();
+        return fbmwService.getAllFbmwOrders();
     }
 
     @GetMapping(path = "/fbmw-order-item/all")
     public Iterable<FbmwOrderItem> getAllFbmwOrderItems() {
-        return FbmwService.getAllFbmwOrderItems();
+        return fbmwService.getAllFbmwOrderItems();
     }
 
 }
